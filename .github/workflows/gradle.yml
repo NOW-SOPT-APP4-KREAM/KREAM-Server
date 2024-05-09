@@ -34,4 +34,8 @@ jobs:
 
     - name: Build with Gradle Wrapper
       run: cd demo1 && ./gradlew build -x test |
-        docker 
+        docker login -u rlarlgnszx -p ${{secrets.DOCKER_PASSWORD }}
+        cd .. |
+        docker build -t nowsopt . 
+        
+        
