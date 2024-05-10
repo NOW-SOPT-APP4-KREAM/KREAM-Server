@@ -39,13 +39,19 @@ jobs:
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Docker Build Image
-      run : docker build -t nowsopt .
+      run : |
+        docker build -t nowsopt .
+        docker tag nowsopt ${{ secrets.DOCKER_REGISTRY_URI }}
     
     - name: Login to ECR
       uses: docker/login-action@v3
       with:
-        registry: <aws-account-number>.dkr.ecr.<region>.amazonaws.com
+        registry: 471112612111.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com
         username: ${{ secrets.AWS_ACCESS_KEY_ID }}
         password: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name : docker image to Registry
+      run : |
+        docker push ${{ secrets.DOCKER_REGISTRY_URI }}
     
 
