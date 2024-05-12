@@ -60,7 +60,7 @@ jobs:
     env:
       EC2_SSH_PRIVATE_KEY: ${{ secrets.AWS_EC2_PEM_KEY }}
       EC2_URL: ${{ secrets.REMOTE_IP }}
-      EC2_USERNAME: ubuntu
+      EC2_USERNAME: ${{ secrets.AWS_USER }} 
     steps:
     - name: Setup SSH for EC2
       uses: omarhosny206/setup-ssh-for-ec2@v1.0.0
