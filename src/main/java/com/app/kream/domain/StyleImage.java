@@ -1,6 +1,5 @@
 package com.app.kream.domain;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,14 +11,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Scrap extends BaseTimeEntity {
+public class StyleImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private Long memberId;
+    private String imageUrl;
 
     @Column(nullable = false)
-    private Long productId;
+    private boolean isVideo;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Product product;
+
 }
