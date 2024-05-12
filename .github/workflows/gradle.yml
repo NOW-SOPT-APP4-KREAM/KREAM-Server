@@ -61,16 +61,14 @@ jobs:
     steps:
      
       - name: Build & Deploy
-        uses: appleboy/ssh-action@v1.0.3 # ssh 접속하는 오픈소스
-        with:
-          host: ${{ secrets.REMOTE_IP }} # 인스턴스 IP
-          username: ubuntu # 우분투 아이디
-          key: ${{ secrets.AWS_EC2_PEM_KEY }} # ec2 instance pem key
-          script: | 
-            echo ${{ secrets.AWS_EC2_PEM_KEY }}
-
-
-          
-            # aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 471112612111.dkr.ecr.ap-southeast-2.amazonaws.com
-            # docker pull ${{ secrets.DOCKER_REGISTRY_URI }}
-            # docker run -it nowsopt
+        env: 
+          SSH_HOST : ${{ secrets.REMOTE_IP }} # 인스턴스 IP
+          SSH_USER : ubuntu
+          SSH_PEM_KEY : ${{ secrets.AWS_EC2_PEM_KEY }}
+        run : |
+            echo "$SSH_PEM_KEY" >> $HOME/key.pem
+            chmod 400 $HOME/key.pem
+            ssh -i $HOME/key.pem -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}
+            aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 471112612111.dkr.ecr.ap-southeast-2.amazonaws.com
+            docker pull ${{ secrets.DOCKER_REGISTRY_URI }}
+            docker run -it nowsopt
