@@ -54,6 +54,7 @@ jobs:
       run : |
         docker push ${{ secrets.DOCKER_REGISTRY_URI }}
   deploy_app:
+    needs : build_app
     name: Deploy to EC2
     runs-on: ubuntu-latest
     
@@ -65,8 +66,8 @@ jobs:
 
       
         run: |
-          echo "$PRIVATE_KEY" > private_key.pem && chmod 600 private_key.pem
-          ssh -i "private_key.pem" ubuntu@ec2-13-54-157-89.ap-southeast-2.compute.amazonaws.com
+          echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+          ssh -o StrictHostKeyChecking=no -i private_key.pem ubuntu@ec2-13-54-157-89.ap-southeast-2.compute.amazonaws.com
           docker pull ${{ secrets.DOCKER_REGISTRY_URI }}
           docker run -it nowsopt:latest
           
