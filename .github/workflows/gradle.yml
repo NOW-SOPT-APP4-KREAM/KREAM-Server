@@ -69,6 +69,11 @@ jobs:
             echo "$SSH_PEM_KEY" >> $HOME/key.pem
             chmod 400 $HOME/key.pem
             ssh -i $HOME/key.pem -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}
+
+      - name : ECR Login
+        run : |
             aws ecr get-login-password --region ap-southeast-2 | docker login --username AWS --password-stdin 471112612111.dkr.ecr.ap-southeast-2.amazonaws.com
+      - name : Docker Pull image 
+        run : | 
             docker pull ${{ secrets.DOCKER_REGISTRY_URI }}
             docker run -it nowsopt
