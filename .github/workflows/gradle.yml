@@ -66,6 +66,7 @@ jobs:
           SSH_USER : ubuntu
           SSH_PEM_KEY : ${{ secrets.AWS_EC2_PEM_KEY }}
         run : |
+            sudo apt-get install openssh-server
             echo "$SSH_PEM_KEY" >> $HOME/key.pem
             chmod 400 $HOME/key.pem
             ssh -i $HOME/key.pem -o StrictHostKeyChecking=no ${SSH_USER}@${SSH_HOST}
