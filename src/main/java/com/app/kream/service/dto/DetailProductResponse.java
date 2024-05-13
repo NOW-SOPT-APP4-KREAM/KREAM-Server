@@ -1,8 +1,10 @@
 package com.app.kream.service.dto;
 
 import com.app.kream.domain.Product;
+import com.app.kream.domain.StyleImage;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public record DetailProductResponse(
         String thumbnailUrl,
@@ -22,7 +24,23 @@ public record DetailProductResponse(
             final Product product
     ) {
         return new DetailProductResponse(
-                product.
+                product.getThumbnailUrl(),
+                product.getPrice(),
+                product.getEngTitle(),
+                product.getTitle(),
+                product.getRecentPrice(),
+                product.getVariablePrice(),
+                product.getVariablePercent(),
+                product.getReleasePrice(),
+                product.getModelNumber(),
+                product.getReleaseDate(),
+                product.getStyleCount(),
+                convertStylesToResponses(product.getStyleImages())
         );
+    }
+    private static List<StyleResponse> convertStylesToResponses(List<StyleImage> styleImages) {
+        return styleImages.stream()
+                .map(StyleResponse::of)
+                .collect(Collectors.toList());
     }
 }

@@ -16,7 +16,7 @@ public interface ProductControllerSwagger {
             @ApiResponse(responseCode = "200", description = "세부 상품 조회에 성공했습니다.")
     })
     CommonResponse<DetailProductResponse> getDetailProduct(
-            @RequestHeader final Long userId,
+            @RequestHeader final Long memberId,
             @PathVariable final Long productId
     );
 }

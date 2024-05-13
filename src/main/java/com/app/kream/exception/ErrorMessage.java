@@ -22,6 +22,8 @@ public enum ErrorMessage {
     /**
      * 404 NOT FOUND
      */
+    MEMBER_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "ID에 해당하는 사용자가 존재하지 않습니다."),
+    PRODUCT_NOT_FOUND(HttpStatus.NOT_FOUND.value(), "ID에 해당하는 상품이 존재하지 않습니다."),
 
     /**
      * 500 INTERNAL SERVER ERROR

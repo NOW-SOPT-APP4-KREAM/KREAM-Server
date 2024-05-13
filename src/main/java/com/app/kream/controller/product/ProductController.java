@@ -20,9 +20,9 @@ public class ProductController implements ProductControllerSwagger {
     @Override
     @GetMapping("/{productId}")
     public CommonResponse<DetailProductResponse> getDetailProduct(
-            @RequestHeader final Long userId,
+            @RequestHeader final Long memberId,
             @PathVariable final Long productId
     ) {
-        return CommonResponse.success(SuccessMessage.GET_DETAIL_PRODUCT_SUCCESS, productService.findDetailProductById(userId, productId));
+        return CommonResponse.success(SuccessMessage.GET_DETAIL_PRODUCT_SUCCESS, productService.findDetailProductById(memberId, productId));
     }
 }
