@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product extends BaseTimeEntity{
+public class Product extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -39,5 +39,21 @@ public class Product extends BaseTimeEntity{
 
     @Column(nullable = false)
     private String styleCount;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private ProductStatus status;
+
+    @Column(nullable = false)
+    private String transactionCount;
+
+    @Column(nullable = false)
+    private String mentionCount;
+
+    @Column(nullable = false)
+    private String brandTtitle;
+
+    @Column(nullable = false)
+    private boolean isFast;
 
 }
