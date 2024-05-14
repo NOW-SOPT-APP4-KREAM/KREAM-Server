@@ -41,4 +41,20 @@ public class ProductService {
         List<StyleImage> styleImages = styleImageService.findAllStyleImageById(product);
         return DetailProductResponse.of(product, styleImages);
     }
+
+    public ReleaseProductResponse findReleaseProduct(
+            final Long memberId
+    ) {
+        List<Product> products = findAllProduct();
+
+        return ReleaseProductResponse.of(
+                products.stream()
+                .map(product -> ReleaseProductInfoResponse.of(product, scrapService.existByMemberIdAndProductId(memberId, product.getId())))
+                .toList()
+        );
+    }
+
+    public List<Product> findAllProduct() {
+        return productRepository.findAll();
+    }
 }
