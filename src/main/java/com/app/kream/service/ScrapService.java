@@ -4,7 +4,7 @@ import com.app.kream.common.CommonResponse;
 import com.app.kream.domain.Scrap;
 import com.app.kream.exception.SuccessMessage;
 import com.app.kream.repository.ScrapRepository;
-import com.app.kream.service.dto.ScrapCreateDto;
+import com.app.kream.service.dto.ScrapCreateRequest;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ public class ScrapService {
 
     @Transactional
     public CommonResponse createScrap(
-            ScrapCreateDto request
+            ScrapCreateRequest request
     ) {
         Scrap scrap = Scrap.builder()
                 .memberId(request.memberId())
