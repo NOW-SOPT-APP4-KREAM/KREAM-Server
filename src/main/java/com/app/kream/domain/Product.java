@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -38,7 +40,19 @@ public class Product extends BaseTimeEntity {
     private String variablePercent;
 
     @Column(nullable = false)
+    private String releasePrice;
+
+    @Column(nullable = false)
+    private String modelNumber;
+
+    @Column(nullable = false)
+    private String releaseDate;
+
+    @Column(nullable = false)
     private String styleCount;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<StyleImage> styleImages;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -51,9 +65,8 @@ public class Product extends BaseTimeEntity {
     private String mentionCount;
 
     @Column(nullable = false)
-    private String brandTtitle;
+    private String brandTitle;
 
     @Column(nullable = false)
     private boolean isFast;
-
 }
