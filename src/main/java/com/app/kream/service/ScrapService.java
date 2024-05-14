@@ -26,4 +26,11 @@ public class ScrapService {
         scrapRepository.save(scrap);
         return CommonResponse.success(SuccessMessage.PROCESS_SUCCESS);
     }
+
+    public Boolean existByMemberIdAndProductId(
+            final Long memberId,
+            final Long productId
+    ) {
+        return scrapRepository.existsByMemberIdAndProductId(memberId, productId);
+    }
 }
