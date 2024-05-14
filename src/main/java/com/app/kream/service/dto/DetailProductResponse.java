@@ -18,7 +18,7 @@ public record DetailProductResponse(
         String modelNumber,
         String releaseDate,
         String styleCount,
-        List<StyleResponse> styles
+        String colorBest
 ) {
     public static DetailProductResponse of(
             final Product product
@@ -35,9 +35,10 @@ public record DetailProductResponse(
                 product.getModelNumber(),
                 product.getReleaseDate(),
                 product.getStyleCount(),
-                convertStylesToResponses(product.getStyleImages())
+                product.getColorBest()
         );
     }
+
     private static List<StyleResponse> convertStylesToResponses(List<StyleImage> styleImages) {
         return styleImages.stream()
                 .map(StyleResponse::of)

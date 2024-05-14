@@ -51,9 +51,6 @@ public class Product extends BaseTimeEntity {
     @Column(nullable = false)
     private String styleCount;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<StyleImage> styleImages;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private ProductStatus status;
@@ -62,11 +59,12 @@ public class Product extends BaseTimeEntity {
     private String transactionCount;
 
     @Column(nullable = false)
-    private String mentionCount;
-
-    @Column(nullable = false)
     private String brandTitle;
 
     @Column(nullable = false)
     private boolean isFast;
+
+    @Column(nullable = false)
+    private String colorBest;
+
 }
