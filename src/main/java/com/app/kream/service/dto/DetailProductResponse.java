@@ -21,7 +21,8 @@ public record DetailProductResponse(
         List<StyleResponse> styles
 ) {
     public static DetailProductResponse of(
-            final Product product
+            final Product product,
+            final List<StyleImage> styles
     ) {
         return new DetailProductResponse(
                 product.getThumbnailUrl(),
@@ -35,9 +36,10 @@ public record DetailProductResponse(
                 product.getModelNumber(),
                 product.getReleaseDate(),
                 product.getStyleCount(),
-                convertStylesToResponses(product.getStyleImages())
+                convertStylesToResponses(styles)
         );
     }
+
     private static List<StyleResponse> convertStylesToResponses(List<StyleImage> styleImages) {
         return styleImages.stream()
                 .map(StyleResponse::of)
