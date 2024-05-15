@@ -13,6 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Tag(name = "상품", description = "상품 관련 API 입니다.")
 public interface ProductControllerSwagger {
@@ -53,10 +54,7 @@ public interface ProductControllerSwagger {
             @ApiResponse(responseCode = "200", description = "검색 상품 조회에 성공했습니다."),
             @ApiResponse(responseCode = "500", description = "서버 내부 오류입니다.", content = @Content(schema = @Schema(implementation = CommonResponse.class)))
     })
-    CommonResponse<SearchProductResponse> getRecommendProduct(
-            @PathVariable final String findName
+    CommonResponse<SearchProductResponse> getFindProduct(
+            @RequestParam(value = "findName") String findName
     );
-
-
-
 }

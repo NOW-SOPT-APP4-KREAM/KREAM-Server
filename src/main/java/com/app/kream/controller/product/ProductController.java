@@ -43,9 +43,9 @@ public class ProductController implements ProductControllerSwagger {
     }
 
     @Override
-    @GetMapping("/{findName}")
-    public CommonResponse<SearchProductResponse> getRecommendProduct(
-            @PathVariable String findName
+    @GetMapping
+    public CommonResponse<SearchProductResponse> getFindProduct(
+            @RequestParam(value = "findName") String findName
     ) {
         return CommonResponse.success(SuccessMessage.GET_FIND_PRODUCT_BY_NAME, productService.findSearchProduct(findName));
     }
