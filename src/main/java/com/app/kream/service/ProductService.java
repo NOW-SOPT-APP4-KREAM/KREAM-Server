@@ -5,14 +5,13 @@ import com.app.kream.domain.StyleImage;
 import com.app.kream.exception.ErrorMessage;
 import com.app.kream.exception.model.NotFoundException;
 import com.app.kream.repository.ProductRepository;
-import com.app.kream.service.dto.DetailProductResponse;
-import com.app.kream.service.dto.ReleaseProductInfoResponse;
-import com.app.kream.service.dto.ReleaseProductResponse;
+import com.app.kream.service.dto.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -39,13 +38,13 @@ public class ProductService {
         memberService.getMemberById(memberId);
         Product product = findProductById(productId);
         List<StyleImage> styleImages = styleImageService.findAllStyleImageById(product);
-        return DetailProductResponse.of(product, styleImages);
+        return DetailProductResponse.of(product, styleImages, scrapService.existByMemberIdAndProductId(memberId, productId));
     }
 
     public ReleaseProductResponse findReleaseProduct(
             final Long memberId
     ) {
-        List<Product> products = findAllProduct();
+        List<Product> products = findLimitCountProduct(12);
 
         return ReleaseProductResponse.of(
                 products.stream()
@@ -54,7 +53,28 @@ public class ProductService {
         );
     }
 
+    public RecommendProductResponse findRecommendProduct(
+            final Long memberId
+    ) {
+        List<ForYouProductResponse> forYouProducts = ForYouProductResponse.convertForYouProductsToResponses(findLimitCountProduct(12));
+
+        List<Product> products = findLimitCountProduct(5);
+        List<JustDropProductResponse> justDropProducts = products.stream()
+                        .map(product -> JustDropProductResponse.of(product, scrapService.existByMemberIdAndProductId(memberId, product.getId())))
+                        .toList();
+
+        return RecommendProductResponse.of(forYouProducts, justDropProducts);
+    }
+
     public List<Product> findAllProduct() {
         return productRepository.findAll();
+    }
+
+    public List<Product> findLimitCountProduct(
+            final int count
+    ) {
+        return findAllProduct().stream()
+                .limit(count)
+                .toList();
     }
 }
