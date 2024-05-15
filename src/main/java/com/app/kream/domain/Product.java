@@ -67,4 +67,8 @@ public class Product extends BaseTimeEntity {
     @Column(nullable = false)
     private String colorBest;
 
+    @Column(nullable = false)
+    private String scrapCount;
+
+
 }

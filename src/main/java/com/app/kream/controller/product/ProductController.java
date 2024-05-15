@@ -6,6 +6,7 @@ import com.app.kream.service.ProductService;
 import com.app.kream.service.dto.DetailProductResponse;
 import com.app.kream.service.dto.RecommendProductResponse;
 import com.app.kream.service.dto.ReleaseProductResponse;
+import com.app.kream.service.dto.SearchProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,5 +40,13 @@ public class ProductController implements ProductControllerSwagger {
             @RequestHeader final Long memberId
     ) {
         return CommonResponse.success(SuccessMessage.GET_RECOMMEND_PRODUCT_SUCCESS, productService.findRecommendProduct(memberId));
+    }
+
+    @Override
+    @GetMapping
+    public CommonResponse<SearchProductResponse> getFindProduct(
+            @RequestParam(value = "findName") String findName
+    ) {
+        return CommonResponse.success(SuccessMessage.GET_FIND_PRODUCT_BY_NAME, productService.findSearchProduct(findName));
     }
 }
