@@ -3,6 +3,8 @@ package com.app.kream.controller.scrap;
 import com.app.kream.common.CommonResponse;
 import com.app.kream.service.ScrapService;
 import com.app.kream.service.dto.ScrapCreateRequest;
+import com.app.kream.service.dto.ScrapDeleteRequest;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,10 +17,21 @@ public class ScrapController implements ScrapControllerSwagger {
 
     @PostMapping
     public CommonResponse createScrap(
-            ScrapCreateRequest request
+            @RequestHeader Long memberId,
+            @RequestBody ScrapCreateRequest request
     ) {
         return scrapService.createScrap(
-                request
+                memberId, request
+        );
+    }
+
+    @DeleteMapping
+    public CommonResponse deleteScrap(
+            @RequestHeader Long memberId,
+            @RequestBody ScrapDeleteRequest request
+    ) {
+        return scrapService.deleteScrap(
+                memberId, request
         );
     }
 }

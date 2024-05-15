@@ -14,10 +14,12 @@ public enum ErrorMessage {
     /**
      * 400 BAD REQUEST EXCEPTION
      */
+    DELETE_SCRAP_FAILED(HttpStatus.BAD_REQUEST.value(), "스크랩 삭제에 실패했습니다"),
 
     /**
      * 403 FORBIDDEN EXCEPTION
      */
+
 
     /**
      * 404 NOT FOUND
@@ -28,10 +30,10 @@ public enum ErrorMessage {
     /**
      * 500 INTERNAL SERVER ERROR
      */
-    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "서버 내부 오류입니다."),
-    ;
+    INTERNAL_SERVER_ERROR(HttpStatus.INTERNAL_SERVER_ERROR.value(), "서버 내부 오류입니다.");
 
     private final int status;
     @Getter
     private final String message;
+
 }
