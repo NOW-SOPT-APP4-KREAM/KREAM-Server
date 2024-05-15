@@ -63,7 +63,7 @@ jobs:
     needs : build_app
     name: connect to EC2
     runs-on: ubuntu-latest
-    if: github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     steps:
     - name: Setup SSH for EC2
       uses: appleboy/ssh-action@master
