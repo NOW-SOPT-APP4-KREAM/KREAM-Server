@@ -12,6 +12,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(
+        name="Scrap",
+        uniqueConstraints = {
+                @UniqueConstraint(
+                        name = "MEMBERID_PRODUCTID_UNIQUE",
+                        columnNames= {"MEMBERID","PRODUCTID"}
+                )
+        }
+)
 public class Scrap extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
