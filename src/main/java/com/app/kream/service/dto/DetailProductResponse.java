@@ -18,7 +18,6 @@ public record DetailProductResponse(
         String modelNumber,
         String releaseDate,
         String styleCount,
-        List<StyleResponse> styles
 ) {
     public static DetailProductResponse of(
             final Product product,

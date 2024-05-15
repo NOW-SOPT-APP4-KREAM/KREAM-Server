@@ -59,11 +59,12 @@ public class Product extends BaseTimeEntity {
     private String transactionCount;
 
     @Column(nullable = false)
-    private String mentionCount;
-
-    @Column(nullable = false)
     private String brandTitle;
 
     @Column(nullable = false)
     private boolean isFast;
+
+    @Column(nullable = false)
+    private String colorBest;
+
 }
