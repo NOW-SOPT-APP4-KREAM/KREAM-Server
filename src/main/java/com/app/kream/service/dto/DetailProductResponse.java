@@ -18,10 +18,10 @@ public record DetailProductResponse(
         String modelNumber,
         String releaseDate,
         String styleCount,
-        String colorBest
 ) {
     public static DetailProductResponse of(
-            final Product product
+            final Product product,
+            final List<StyleImage> styles
     ) {
         return new DetailProductResponse(
                 product.getThumbnailUrl(),
@@ -35,7 +35,7 @@ public record DetailProductResponse(
                 product.getModelNumber(),
                 product.getReleaseDate(),
                 product.getStyleCount(),
-                product.getColorBest()
+                convertStylesToResponses(styles)
         );
     }
 
