@@ -1,5 +1,5 @@
 FROM khipu/openjdk17-alpine:latest
-ARG JAR_FILE_PATH=kream/build/libs/kream-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE_PATH=build/libs/kream-0.0.1-SNAPSHOT.jar
 COPY ${JAR_FILE_PATH} app.jar
 ENTRYPOINT ["java", "-jar", "app.jar"]
 EXPOSE 8080
