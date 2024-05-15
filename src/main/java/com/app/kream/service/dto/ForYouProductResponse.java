@@ -2,6 +2,9 @@ package com.app.kream.service.dto;
 
 import com.app.kream.domain.Product;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 public record ForYouProductResponse(
         String thumbnailUrl,
         String brandTitle,
@@ -19,5 +22,13 @@ public record ForYouProductResponse(
                 product.getPrice(),
                 product.getTransactionCount()
         );
+    }
+
+    public static List<ForYouProductResponse> convertForYouProductsToResponses(
+            List<Product> products
+    ) {
+        return products.stream()
+                .map(ForYouProductResponse::of)
+                .collect(Collectors.toList());
     }
 }

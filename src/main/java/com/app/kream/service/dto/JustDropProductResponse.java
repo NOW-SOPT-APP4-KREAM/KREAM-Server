@@ -2,7 +2,7 @@ package com.app.kream.service.dto;
 
 import com.app.kream.domain.Product;
 
-public record JustDropProductList(
+public record JustDropProductResponse(
         String thumbnailUrl,
         String brandTitle,
         String engTitle,
@@ -11,11 +11,11 @@ public record JustDropProductList(
         Boolean isScrap,
         Boolean isFast
 ) {
-    public static JustDropProductList of(
+    public static JustDropProductResponse of(
             final Product product,
             final Boolean isScrap
     ) {
-        return new JustDropProductList(
+        return new JustDropProductResponse(
                 product.getThumbnailUrl(),
                 product.getBrandTitle(),
                 product.getEngTitle(),

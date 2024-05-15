@@ -4,11 +4,11 @@ import java.util.List;
 
 public record RecommendProductResponse(
         List<ForYouProductResponse> forYouList,
-        List<JustDropProductList> justDropList
+        List<JustDropProductResponse> justDropList
 ) {
     public static RecommendProductResponse of(
             List<ForYouProductResponse> forYouList,
-            List<JustDropProductList> justDropList
+            List<JustDropProductResponse> justDropList
     ) {
         return new RecommendProductResponse(
                 forYouList,
