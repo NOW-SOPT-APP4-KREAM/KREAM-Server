@@ -11,7 +11,8 @@ public record SearchFindProductResponse(
         String engTitle,
         String title,
         String price,
-        String transactionCount
+        String transactionCount,
+        String scrapCount
 ) {
     public static SearchFindProductResponse of(
             final Product product
@@ -22,11 +23,12 @@ public record SearchFindProductResponse(
                 product.getEngTitle(),
                 product.getTitle(),
                 product.getPrice(),
-                product.getTransactionCount()
+                product.getTransactionCount(),
+                product.getScrapCount()
         );
     }
 
-    public static List<SearchFindProductResponse> convertForYouProductsToResponses(
+    public static List<SearchFindProductResponse> convertSearchFindProductToResponses(
             List<Product> products
     ) {
         return products.stream()
