@@ -27,12 +27,11 @@ public class ScrapController implements ScrapControllerSwagger {
 
     @DeleteMapping
     public CommonResponse deleteScrap(
-            @RequestHeader  Long memberId,
+            @RequestHeader Long memberId,
             @RequestBody ScrapDeleteRequest request
-    )
-    {
+    ) {
         return scrapService.deleteScrap(
-                memberId,  request
+                memberId, request
         );
     }
 }

@@ -22,7 +22,7 @@ public class ScrapService {
     public CommonResponse createScrap(
             Long memberId,
             ScrapCreateRequest request
-    ){
+    ) {
         Scrap scrap = Scrap.builder()
                 .memberId(memberId)
                 .productId(request.productId())
@@ -41,8 +41,8 @@ public class ScrapService {
 
     public CommonResponse deleteScrap(Long memberId, ScrapDeleteRequest request) {
         Scrap scrap = scrapRepository.findByMemberIdAndProductId(
-                memberId,
-                request.productId()
+                        memberId,
+                        request.productId()
                 )
                 .orElseThrow(
                         () -> new BusinessException(ErrorMessage.DELETE_SCRAP_FAILED)
