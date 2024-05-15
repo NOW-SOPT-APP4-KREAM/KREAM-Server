@@ -33,6 +33,7 @@ public class ProductController implements ProductControllerSwagger {
         return CommonResponse.success(SuccessMessage.GET_RELEASE_PRODUCT_SUCCESS, productService.findReleaseProduct(memberId));
     }
 
+    @Override
     @GetMapping("/recommend")
     public CommonResponse<RecommendProductResponse> getRecommendProduct(
             @RequestHeader final Long memberId

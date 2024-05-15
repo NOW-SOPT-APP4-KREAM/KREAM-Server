@@ -2,6 +2,7 @@ package com.app.kream.controller.product;
 
 import com.app.kream.common.CommonResponse;
 import com.app.kream.service.dto.DetailProductResponse;
+import com.app.kream.service.dto.RecommendProductResponse;
 import com.app.kream.service.dto.ReleaseProductResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,6 +35,15 @@ public interface ProductControllerSwagger {
             @ApiResponse(responseCode = "500", description = "서버 내부 오류입니다.", content = @Content(schema = @Schema(implementation = CommonResponse.class)))
     })
     CommonResponse<ReleaseProductResponse> getReleaseProduct(
+            @RequestHeader final Long memberId
+    );
+
+    @Operation(summary = "추천 상품 조회 API")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "추천 상품 조회에 성공했습니다."),
+            @ApiResponse(responseCode = "500", description = "서버 내부 오류입니다.", content = @Content(schema = @Schema(implementation = CommonResponse.class)))
+    })
+    CommonResponse<RecommendProductResponse> getRecommendProduct(
             @RequestHeader final Long memberId
     );
 }
