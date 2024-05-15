@@ -86,12 +86,14 @@ public class ProductService {
             String findName
     ) {
         return SearchProductResponse.of(
-                SearchFindProductResponse.convertForYouProductsToResponses(
-                        productRepository.findByBrandTitleInOrTitleInOrEngTitleIn(findName)
-                ),
-                RelateRecommendProductResponse.convertForYouProductsToResponses(
-                        productRepository.findByTitleIn(findName)
-                )
+                productRepository.findByBrandTitleContainingOrTitleContainingOrEngTitleContaining(findName, findName, findName)
+                        .stream()
+                        .map(SearchFindProductResponse::of)
+                        .collect(Collectors.toList()),
+                productRepository.findByEngTitleContainingOrTitleContainingOrderByIdDesc(findName,findName)
+                        .stream()
+                        .map(RelateRecommendProductResponse::of)
+                        .collect(Collectors.toList())
         );
     }
 
