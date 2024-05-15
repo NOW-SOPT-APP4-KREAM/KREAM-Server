@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "MEMBERID_PRODUCTID_UNIQUE",
-                        columnNames= {"MEMBERID","PRODUCTID"}
+                        columnNames= {"memberId","productId"}
                 )
         }
 )
