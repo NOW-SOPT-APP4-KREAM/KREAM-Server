@@ -45,7 +45,7 @@ public class ProductService {
     public ReleaseProductResponse findReleaseProduct(
             final Long memberId
     ) {
-        List<Product> products = findAllProduct();
+        List<Product> products = findTwelveProduct();
 
         return ReleaseProductResponse.of(
                 products.stream()
@@ -56,5 +56,11 @@ public class ProductService {
 
     public List<Product> findAllProduct() {
         return productRepository.findAll();
+    }
+
+    public List<Product> findTwelveProduct() {
+        return findAllProduct().stream()
+                .limit(12)
+                .toList();
     }
 }
