@@ -60,11 +60,15 @@ public class ProductService {
 
         List<Product> products = findLimitCountProduct(5);
         List<JustDropProductResponse> justDropProducts = products.stream()
-                        .map(product -> JustDropProductResponse.of(product, scrapService.existByMemberIdAndProductId(memberId, product.getId())))
+                        .map(product -> JustDropProductResponse.of(
+                                product, scrapService.existByMemberIdAndProductId(
+                                        memberId, product.getId())
+                        ))
                         .toList();
 
         return RecommendProductResponse.of(forYouProducts, justDropProducts);
     }
+
 
     public List<Product> findAllProduct() {
         return productRepository.findAll();
@@ -77,4 +81,18 @@ public class ProductService {
                 .limit(count)
                 .toList();
     }
+
+    public SearchProductResponse findSearchProduct(
+            String findName
+    ) {
+        return SearchProductResponse.of(
+                SearchFindProductResponse.convertForYouProductsToResponses(
+                        productRepository.findByBrandTitleInOrTitleInOrEngTitleIn(findName)
+                ),
+                RelateRecommendProductResponse.convertForYouProductsToResponses(
+                        productRepository.findByTitleIn(findName)
+                )
+        );
+    }
+
 }
