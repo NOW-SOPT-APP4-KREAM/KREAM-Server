@@ -18,11 +18,15 @@ public record DetailProductResponse(
         String modelNumber,
         String releaseDate,
         String styleCount,
-        List<StyleResponse> styles
+        List<StyleResponse> styles,
+        Boolean isScrap,
+        String scrapCount,
+        String cellPrice
 ) {
     public static DetailProductResponse of(
             final Product product,
-            final List<StyleImage> styles
+            final List<StyleImage> styles,
+            final Boolean isScrap
     ) {
         return new DetailProductResponse(
                 product.getThumbnailUrl(),
@@ -36,7 +40,10 @@ public record DetailProductResponse(
                 product.getModelNumber(),
                 product.getReleaseDate(),
                 product.getStyleCount(),
-                convertStylesToResponses(styles)
+                convertStylesToResponses(styles),
+                isScrap,
+                product.getStyleCount(),
+                product.getPrice()
         );
     }
 

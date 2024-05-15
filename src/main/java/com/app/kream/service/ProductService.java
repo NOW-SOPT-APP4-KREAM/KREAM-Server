@@ -39,7 +39,7 @@ public class ProductService {
         memberService.getMemberById(memberId);
         Product product = findProductById(productId);
         List<StyleImage> styleImages = styleImageService.findAllStyleImageById(product);
-        return DetailProductResponse.of(product, styleImages);
+        return DetailProductResponse.of(product, styleImages, scrapService.existByMemberIdAndProductId(memberId, productId));
     }
 
     public ReleaseProductResponse findReleaseProduct(
