@@ -44,7 +44,7 @@
 //    }
 //
 //    public void saveProduct(){
-//        try (Reader reader = new FileReader("/home/kihoon/Desktop/AWS/server/KREAM-Server/src/main/java/com/app/kream/config/db.csv")) {
+//        try (Reader reader = new FileReader("build/resources/main/db.csv")) {
 //            CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
 //                    .withFirstRecordAsHeader()
 //                    .withIgnoreHeaderCase()
