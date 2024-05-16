@@ -44,7 +44,7 @@ public class InitializeDefaultConfig implements ApplicationRunner {
     }
 
     public void saveProduct(){
-        try (Reader reader = new FileReader("src/main/java/com/app/kream/config/db.csv")) {
+        try (Reader reader = new FileReader("src/main/resources/db.csv")) {
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withFirstRecordAsHeader()
                     .withIgnoreHeaderCase()
