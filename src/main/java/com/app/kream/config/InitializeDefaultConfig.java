@@ -36,11 +36,19 @@
 //
 //    public void saveMember(){
 //        Member member = Member.builder()
-//                .name("kihoon")
+//                .name("IOS")
 //                .age(20)
 //                .build();
 //
 //        memberRepository.save(member);
+//
+//
+//        Member member2 = Member.builder()
+//                .name("ANDROID")
+//                .age(20)
+//                .build();
+//
+//        memberRepository.save(member2);
 //    }
 //
 //    public void saveProduct(){
