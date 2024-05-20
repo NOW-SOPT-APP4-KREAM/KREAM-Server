@@ -12,7 +12,9 @@ public record SearchFindProductResponse(
         String title,
         String price,
         String transactionCount,
-        String scrapCount
+        String scrapCount,
+        String styleCount,
+        boolean isFast
 ) {
     public static SearchFindProductResponse of(
             final Product product
@@ -24,7 +26,9 @@ public record SearchFindProductResponse(
                 product.getTitle(),
                 product.getPrice(),
                 product.getTransactionCount(),
-                product.getScrapCount()
+                product.getScrapCount(),
+                product.getStyleCount(),
+                product.isFast()
         );
     }
 
