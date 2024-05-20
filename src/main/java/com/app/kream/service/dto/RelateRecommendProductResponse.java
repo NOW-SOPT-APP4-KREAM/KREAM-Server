@@ -9,8 +9,9 @@ public record RelateRecommendProductResponse(
         String thumbnailUrl,
         String engTitle,
         String price,
-        Boolean isFast,
-        String scrapCount
+        boolean isFast,
+        String scrapCount,
+        String styleCount
 
 ) {
     public static RelateRecommendProductResponse of(
@@ -21,7 +22,8 @@ public record RelateRecommendProductResponse(
                 product.getBrandTitle(),
                 product.getEngTitle(),
                 product.isFast(),
-                product.getScrapCount()
+                product.getScrapCount(),
+                product.getStyleCount()
         );
     }
 
