@@ -1,6 +1,8 @@
 package com.app.kream.config;
 
 import com.app.kream.domain.*;
+import com.app.kream.exception.ErrorMessage;
+import com.app.kream.exception.model.BusinessException;
 import com.app.kream.repository.MemberRepository;
 import com.app.kream.repository.ProductRepository;
 import com.app.kream.repository.ScrapRepository;
@@ -80,7 +82,7 @@ public class InitializeDefaultConfig implements ApplicationRunner {
                         .scrapCount(record.get("scrapCount"))
                         .isFreeDeliver(Boolean.parseBoolean(record.get("isFreeDeliver")))
                         .isSave(Boolean.parseBoolean(record.get("isSave")))
-                        .isCoupon(Boolean.parseBoolean(record.get("isCoupon")))
+                        .isCoupon(Boolean.parseBoolean(record.get("isCoupoon")))
                         .build();
                 productRepository.save(product);
             }
@@ -93,7 +95,9 @@ public class InitializeDefaultConfig implements ApplicationRunner {
         StyleImage styleImage = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20509.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage1 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20510.png")
@@ -103,22 +107,30 @@ public class InitializeDefaultConfig implements ApplicationRunner {
         StyleImage styleImage2 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20511.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage3 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20512.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage4 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20513.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage5 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20514.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage6 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20515.png")
@@ -129,17 +141,23 @@ public class InitializeDefaultConfig implements ApplicationRunner {
         StyleImage styleImage7 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20516.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage8 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20517.png")
                 .isVideo(true)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
         StyleImage styleImage9 = StyleImage.builder()
                 .imageUrl("https://github.com/NOW-SOPT-APP4-KREAM/KREAM-Server/blob/main/image/styleview/Frame%20789.png")
                 .isVideo(false)
-                .product(productRepository.findById(1L).orElseThrow(()->new RuntimeException()))
+                .product(productRepository.findById(1L).orElseThrow(
+                        ()->new BusinessException(ErrorMessage.PRODUCT_NOT_FOUND))
+                )
                 .build();
 
         styleImageRepository.saveAll(Arrays.asList(styleImage, styleImage2, styleImage3, styleImage4, styleImage5, styleImage6, styleImage7, styleImage8, styleImage9));
