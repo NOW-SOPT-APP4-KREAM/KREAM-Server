@@ -9,7 +9,10 @@ public record JustDropProductResponse(
         String price,
         String transactionCount,
         Boolean isScrap,
-        Boolean isFast
+        Boolean isFast,
+        Boolean isFreeDeliver,
+        Boolean isSave,
+        Boolean isCoupon
 ) {
     public static JustDropProductResponse of(
             final Product product,
@@ -22,7 +25,10 @@ public record JustDropProductResponse(
                 product.getPrice(),
                 product.getTransactionCount(),
                 isScrap,
-                product.isFast()
+                product.isFast(),
+                product.isFreeDeliver(),
+                product.isSave(),
+                product.isCoupon()
         );
     }
 }
