@@ -19,8 +19,8 @@ public record RelateRecommendProductResponse(
     ) {
         return new RelateRecommendProductResponse(
                 product.getThumbnailUrl(),
-                product.getBrandTitle(),
                 product.getEngTitle(),
+                product.getPrice(),
                 product.isFast(),
                 product.getScrapCount(),
                 product.getStyleCount()
