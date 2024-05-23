@@ -6,7 +6,7 @@ import com.app.kream.domain.ProductStatus;
 public record ReleaseProductInfoResponse(
         String thumbnailUrl,
         String brandTitle,
-        String title,
+        String engTitle,
         Boolean isScrap,
         Boolean isUpdate,
         Boolean isNew
@@ -18,7 +18,7 @@ public record ReleaseProductInfoResponse(
         return new ReleaseProductInfoResponse(
                 product.getThumbnailUrl(),
                 product.getBrandTitle(),
-                product.getTitle(),
+                product.getEngTitle(),
                 isScrap,
                 checkIsUpdate(product.getStatus()),
                 checkIsNew(product.getStatus())
