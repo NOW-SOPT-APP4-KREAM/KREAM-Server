@@ -65,6 +65,15 @@ public class Product extends BaseTimeEntity {
     private boolean isFast;
 
     @Column(nullable = false)
+    private boolean isFreeDeliver;
+
+    @Column(nullable = false)
+    private boolean isSave;
+
+    @Column(nullable = false)
+    private boolean isCoupon;
+
+    @Column(nullable = false)
     private String colorBest;
 
     @Column(nullable = false)
